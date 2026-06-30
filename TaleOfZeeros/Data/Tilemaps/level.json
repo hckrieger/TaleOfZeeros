@@ -19,6 +19,12 @@
          "id":1,
          "name":"Floor",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"TileCollision",
+                 "type":"string",
+                 "value":"Impassable"
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":20,
@@ -42,17 +48,52 @@
          "id":3,
          "name":"Nature",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"TileCollision",
+                 "type":"string",
+                 "value":"Impassable"
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":20,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":5,
+         "name":"Character",
+         "objects":[
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"Player",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"TextureKey",
+                         "type":"string",
+                         "value":"Actor\/Character\/Boy\/SpriteSheet"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":160,
+                 "y":48
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":4,
- "nextobjectid":1,
+ "nextlayerid":6,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.12.2",
+ "tiledversion":"1.11.2",
  "tileheight":16,
  "tilesets":[
         {

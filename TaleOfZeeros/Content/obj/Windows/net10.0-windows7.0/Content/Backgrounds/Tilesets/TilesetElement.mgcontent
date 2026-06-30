@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetElement.png</SourceFile>
-  <SourceTime>2026-06-23T15:58:03.8577784-04:00</SourceTime>
-  <DestFile>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/bin/Windows/Content/Backgrounds/Tilesets/TilesetElement.xnb</DestFile>
-  <DestTime>2026-06-24T18:19:10.0922847-04:00</DestTime>
+  <SourceFile>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetElement.png</SourceFile>
+  <SourceTime>2026-06-27T23:20:50.3620729-04:00</SourceTime>
+  <DestFile>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/bin/Windows/Content/Backgrounds/Tilesets/TilesetElement.xnb</DestFile>
+  <DestTime>2026-06-27T23:21:04.4202138-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-06-02T06:31:02-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
