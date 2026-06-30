@@ -14,7 +14,7 @@ namespace TaleOfZeeros
 	{
 		private RenderSystem renderSystem;
 		int x, y;
-		private float speed = 50;
+		private float speed = 35;
 		public int Id { get; set; }
 
 

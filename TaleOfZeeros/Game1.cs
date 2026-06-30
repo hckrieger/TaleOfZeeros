@@ -51,8 +51,7 @@ namespace TaleOfZeeros
 							{
 								Position = new Vector2(obj.X, obj.Y),
 								TextureKey = obj.Properties.GetValue<string>("TextureKey"),
-								SourceRectangle = Utils.IndexToSourceRectangle(3, new Point(16, 16), 4)
-
+								SourceRectangle = Utils.IndexToSourceRectangle(0, new Point(16, 16), 4),
 							};
 
 
