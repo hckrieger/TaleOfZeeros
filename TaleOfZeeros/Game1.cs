@@ -6,6 +6,7 @@ using Reusable;
 using Reusable.Managers;
 using Reusable.Services;
 using SharpDX.Win32;
+using System.Diagnostics;
 using System.Linq;
 
 namespace TaleOfZeeros
@@ -19,6 +20,8 @@ namespace TaleOfZeeros
 		private RenderSystem renderSystem;
 		private InputManager inputManager;
 		private PlayerController playerController;
+		private Rectangle playerHeadCollision, playerFeetCollision;
+		public const int PLAYER = 0;
 		public Game1()
 		{
 			_graphics = new GraphicsDeviceManager(this);
@@ -38,7 +41,7 @@ namespace TaleOfZeeros
 			playerController = new PlayerController(this);
 			
 			displayManager.SetWindowSize(new Point(320, 180), 4);
-			displayManager.ToggleFullScreen();
+			//displayManager.ToggleFullScreen();
 
 			tilemapManager.ForEachObject((layer, obj) =>
 			{
@@ -77,6 +80,13 @@ namespace TaleOfZeeros
 
 			// TODO: Add your update logic here
 			playerController.Update(gameTime, inputManager);
+
+			var playerPosition = renderSystem.Data.Position[PLAYER] - renderSystem.Data.Origin[PLAYER];
+			playerHeadCollision = new Rectangle(1 + (int)playerPosition.X, 1 + (int)playerPosition.Y, 15, 12);
+			playerFeetCollision = new Rectangle(1 + (int)playerPosition.X, 13 + (int)playerPosition.Y, 14, 3);
+
+
+			
 
 			base.Update(gameTime);
 		}
