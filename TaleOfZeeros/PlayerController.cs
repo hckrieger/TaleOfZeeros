@@ -1,5 +1,5 @@
-﻿using Jewely;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Reusable;
 using Reusable.Services;
 using SharpDX.Direct2D1.Effects;
 using System;
@@ -13,9 +13,12 @@ namespace TaleOfZeeros
 	public class PlayerController
 	{
 		private RenderSystem renderSystem;
-		int x, y;
-		private float speed = 35;
+		public Vector2 Direction { get; set; }
+		public Vector2 Velocity { get; set; }
+		private float speed = 30;
 		public int Id { get; set; }
+		int x, y;
+		public bool Stop { get; set; } = false;
 
 
 
@@ -26,11 +29,24 @@ namespace TaleOfZeeros
 
 		public void Update(GameTime gameTime, InputManager inputManager)
 		{
+			if (Stop)
+				return;
 			inputManager.Update();
 
-			float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
 			
+
+
+			ReadInput(inputManager);
+
+			MovePlayer(gameTime);
+
+
+
+		
+		}
+
+		private void ReadInput(InputManager inputManager)
+		{
 			if (inputManager.Binding[InputManager.InputAction.MoveLeft].Invoke())
 				x = -1;
 			else if (inputManager.Binding[InputManager.InputAction.MoveRight].Invoke())
@@ -45,17 +61,19 @@ namespace TaleOfZeeros
 			else
 				y = 0;
 
-			Vector2 direction = new Vector2(x, y);
-
-			if (x != 0 &&  y != 0)
+			if (x != 0 && y != 0)
 			{
-				direction.Normalize();
+				Direction.Normalize();
 			}
-			Debug.WriteLine($"{direction}");
-			renderSystem.Data.Position[Id] += direction * speed * dt;
 
+			Direction = new Vector2(x, y);
+		}
 
-		
+		private void MovePlayer(GameTime gameTime)
+		{
+			float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+			Velocity = Direction * speed * dt;
+			renderSystem.Data.Position[Id] += Velocity;
 		}
 	}
 }

@@ -21,9 +21,14 @@
          "opacity":1,
          "properties":[
                 {
+                 "name":"RenderSystemIntegrate",
+                 "type":"bool",
+                 "value":false
+                }, 
+                {
                  "name":"TileCollision",
                  "type":"string",
-                 "value":"Impassable"
+                 "value":"Passable"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -49,6 +54,11 @@
          "name":"NatureGround",
          "opacity":1,
          "properties":[
+                {
+                 "name":"RenderSystemIntegrate",
+                 "type":"bool",
+                 "value":false
+                }, 
                 {
                  "name":"TileCollision",
                  "type":"string",
@@ -80,8 +90,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":160,
-                 "y":48
+                 "x":16,
+                 "y":16
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -107,6 +117,16 @@
          "name":"NatureHigh",
          "opacity":1,
          "properties":[
+                {
+                 "name":"LayerDepth",
+                 "type":"float",
+                 "value":0.6
+                }, 
+                {
+                 "name":"RenderSystemIntegrate",
+                 "type":"bool",
+                 "value":true
+                }, 
                 {
                  "name":"TileCollision",
                  "type":"string",

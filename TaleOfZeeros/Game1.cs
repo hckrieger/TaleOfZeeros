@@ -1,11 +1,11 @@
-﻿using Jewely;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Reusable;
 using Reusable.Managers;
 using Reusable.Services;
 using SharpDX.Win32;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -36,12 +36,12 @@ namespace TaleOfZeeros
 
 			Services.AddService(renderSystem);
 			displayManager = new DisplayManager(_graphics);
-			tilemapManager = new TilemapManager("Data/Tilemaps/level.json", Content.Load<Texture2D>);
+			tilemapManager = new TilemapManager("Data/Tilemaps/level.json", Content.Load<Texture2D>, this);
 			inputManager = new InputManager(displayManager, InputManager.BindingType.TopDownAdventure);
 			playerController = new PlayerController(this);
 			
 			displayManager.SetWindowSize(new Point(320, 180), 4);
-			//displayManager.ToggleFullScreen();
+		//	displayManager.ToggleFullScreen();
 
 			tilemapManager.ForEachObject((layer, obj) =>
 			{
@@ -73,20 +73,133 @@ namespace TaleOfZeeros
 			// TODO: use this.Content to load your game content here
 		}
 
+
+
 		protected override void Update(GameTime gameTime)
 		{
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
 			// TODO: Add your update logic here
-			playerController.Update(gameTime, inputManager);
+			
 
-			var playerPosition = renderSystem.Data.Position[PLAYER] - renderSystem.Data.Origin[PLAYER];
+			var playerPosition = renderSystem.Data.Position[playerController.Id] - renderSystem.Data.Origin[playerController.Id];
 			playerHeadCollision = new Rectangle(1 + (int)playerPosition.X, 1 + (int)playerPosition.Y, 15, 12);
 			playerFeetCollision = new Rectangle(1 + (int)playerPosition.X, 13 + (int)playerPosition.Y, 14, 3);
 
+			var tileMap = tilemapManager.TiledMap;
+			var tiledLayers = tileMap.Layers;
 
+			var chosenRectangle = playerFeetCollision;
+
+			int leftTile = chosenRectangle.Left / tileMap.TileWidth;
+			int rightTile = (chosenRectangle.Right) / tileMap.TileWidth;
+			int topTile = chosenRectangle.Top / tileMap.TileHeight;
+			int bottomTile = (chosenRectangle.Bottom) / tileMap.TileHeight;
+
+			playerController.Stop = false;
+
+			int predictedXBuffer = 0;
+			int predictedYBuffer = 0;
+
+			Vector2 velocity = playerController.Velocity;
 			
+
+			if (velocity.X > 0)
+			{
+				predictedXBuffer = 1;
+			}
+			else if (velocity.X < 0)
+			{
+				predictedYBuffer = -1;
+			}
+
+			if (velocity.Y > 0)
+			{
+				predictedYBuffer = 1;
+			}
+			else if (velocity.Y < 0)
+			{
+				predictedYBuffer = -1;
+			}
+
+			var predictedPlayerBounds = new Rectangle((int)(playerFeetCollision.X + predictedXBuffer),
+												(int)(playerFeetCollision.Y + predictedYBuffer),
+												playerFeetCollision.Width,
+												playerFeetCollision.Height);
+
+			for (int y = topTile; y <= bottomTile; y++)
+			{
+				for (int x = leftTile; x <= rightTile; x++)
+				{
+					var boundsAroundPlayer = new Rectangle(x * tileMap.TileWidth, y * tileMap.TileHeight, tileMap.TileWidth, tileMap.TileHeight);
+
+					foreach (var layer in tiledLayers)
+					{
+						if (layer.Type == "objectgroup")
+							continue;
+
+						if (layer.Properties.GetValue<string>("TileCollision") == "Impassable")
+						{
+							var tileIndex = Utils.CoordinateToIndex(x, y, tileMap.Width);
+
+							if (layer.Data[tileIndex] == 0)
+								continue;
+
+							var tileBounds = new Rectangle(x * tileMap.TileWidth, y * tileMap.TileHeight, tileMap.TileWidth, tileMap.TileHeight);
+
+
+
+							
+
+							if (tileBounds.Intersects(predictedPlayerBounds))
+							{
+								 if (predictedXBuffer == -1 && playerController.Direction.X == 1)
+									playerController.Direction = new Vector2(0, playerController.Direction.Y);
+								else if (predictedXBuffer == 1)
+									playerController.Direction = new Vector2(0, playerController.Direction.Y);
+
+								if (predictedYBuffer == -1)
+									playerController.Direction = new Vector2(playerController.Direction.X, 0);
+								else if (predictedYBuffer == 1)
+									playerController.Direction = new Vector2(playerController.Direction.X, 0);
+
+
+							} 
+						} 
+						
+						
+					}
+				}
+			}
+
+			playerController.Update(gameTime, inputManager);
+			//foreach (var layer in tiledLayers)
+			//{
+			//	if (layer.Type == "objectgroup")
+			//		continue;
+
+			//	for (int i = 0; i < layer.Data.Count; i++)
+			//	{
+			//		if (layer.Data[i] == 0)
+			//			continue;
+
+			//		var tileCoordinate = Utils.IndexToCoordinate(layer.Data[i], layer.Width);
+
+			//		var tileBounds = new Rectangle(tileCoordinate.X * tileMap.TileWidth, tileCoordinate.Y * tileMap.TileHeight, tileMap.TileWidth, tileMap.TileHeight);
+
+			//		var playerCollision = playerFeetCollision.Intersects(tileBounds);
+
+			//		if (playerCollision)
+			//		{
+			//			Debug.WriteLine("A tile collision happened");
+			//		} else
+			//		{
+			//			Debug.WriteLine("Not");
+			//		}
+			//	}
+			//}
+
 
 			base.Update(gameTime);
 		}
@@ -99,8 +212,12 @@ namespace TaleOfZeeros
 			_graphics.GraphicsDevice.SetRenderTarget(displayManager.RenderTarget);
 			_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 			tilemapManager.Draw(_spriteBatch);
+			_spriteBatch.End();
+
+			_spriteBatch.Begin(samplerState: SamplerState.PointClamp, sortMode: SpriteSortMode.FrontToBack);
 			renderSystem.Draw(_spriteBatch);
 			_spriteBatch.End();
+
 			_graphics.GraphicsDevice.SetRenderTarget(null);
 
 			_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
