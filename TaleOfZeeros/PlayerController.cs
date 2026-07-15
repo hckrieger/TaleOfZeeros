@@ -19,12 +19,13 @@ namespace TaleOfZeeros
 		public int Id { get; set; }
 		int x, y;
 		public bool Stop { get; set; } = false;
-
+		private CameraManager camera;
 
 
 		public PlayerController(Game game)
 		{
 			renderSystem = game.Services.GetService<RenderSystem>();
+			camera = game.Services.GetService<CameraManager>();
 		}
 
 		public void Update(GameTime gameTime, InputManager inputManager)
@@ -41,7 +42,7 @@ namespace TaleOfZeeros
 			MovePlayer(gameTime);
 
 
-
+			camera.Location = renderSystem.Data.Position[Id];
 		
 		}
 
@@ -74,6 +75,8 @@ namespace TaleOfZeeros
 			float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 			Velocity = Direction * speed * dt;
 			renderSystem.Data.Position[Id] += Velocity;
+
+			
 		}
 	}
 }

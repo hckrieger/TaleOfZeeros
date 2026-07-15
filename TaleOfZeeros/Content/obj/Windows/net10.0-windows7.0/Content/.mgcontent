@@ -4,26 +4,26 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Actor/Character/Boy/SpriteSheet.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/Pipes.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/tileset_bed.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/tileset_camp.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetDesert.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetDungeon.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetElement.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetField.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetFloor.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetFloorB.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetFloorDetail.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetHole.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetHouse.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetLogic.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetNature.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetRelief.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetReliefDetail.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetTowers.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetVillageAbandoned.png</File>
-    <File>C:/Users/hckri/source/repos/MonoGame/games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetWater.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Actor/Character/Boy/SpriteSheet.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/Pipes.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/tileset_bed.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/tileset_camp.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetDesert.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetDungeon.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetElement.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetField.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetFloor.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetFloorB.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetFloorDetail.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetHole.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetHouse.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetLogic.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetNature.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetRelief.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetReliefDetail.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetTowers.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetVillageAbandoned.png</File>
+    <File>C:/Users/hckri/source/repos/Game/MonoGame/Games/TaleOfZeeros/TaleOfZeeros/Content/Backgrounds/Tilesets/TilesetWater.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

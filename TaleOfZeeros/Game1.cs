@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Reusable;
 using Reusable.Managers;
 using Reusable.Services;
+using SharpDX.DirectWrite;
 using SharpDX.Win32;
 using System;
 using System.Diagnostics;
@@ -20,8 +21,11 @@ namespace TaleOfZeeros
 		private RenderSystem renderSystem;
 		private InputManager inputManager;
 		private PlayerController playerController;
+		private CameraManager cameraManager;
 		private Rectangle playerHeadCollision, playerFeetCollision;
 		public const int PLAYER = 0;
+
+
 		public Game1()
 		{
 			_graphics = new GraphicsDeviceManager(this);
@@ -32,16 +36,26 @@ namespace TaleOfZeeros
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
-			renderSystem = new RenderSystem(this, 15, Content.Load<Texture2D>);
-
+			renderSystem = new RenderSystem(this, 100, Content.Load<Texture2D>);
 			Services.AddService(renderSystem);
+			
+
 			displayManager = new DisplayManager(_graphics);
+			displayManager.SetWindowSize(new Point(320, 180), 4);
 			tilemapManager = new TilemapManager("Data/Tilemaps/level.json", Content.Load<Texture2D>, this);
 			inputManager = new InputManager(displayManager, InputManager.BindingType.TopDownAdventure);
+
+			var tilemap = tilemapManager.TiledMap;
+			Rectangle worldBounds = new Rectangle(0, 0, tilemap.WorldPixelWidth, tilemap.WorldPixelHeight);
+			Rectangle cameraBounds = new Rectangle(0, 0, displayManager.InternalResolution.X, displayManager.InternalResolution.Y);
+			cameraManager = new CameraManager(cameraBounds, worldBounds);
+			Services.AddService(cameraManager);
+
+
 			playerController = new PlayerController(this);
 			
-			displayManager.SetWindowSize(new Point(320, 180), 4);
-		//	displayManager.ToggleFullScreen();
+			
+			//displayManager.ToggleFullScreen();
 
 			tilemapManager.ForEachObject((layer, obj) =>
 			{
@@ -210,11 +224,11 @@ namespace TaleOfZeeros
 
 			// TODO: Add your drawing code here
 			_graphics.GraphicsDevice.SetRenderTarget(displayManager.RenderTarget);
-			_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+			_spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cameraManager.TransformMatrix);
 			tilemapManager.Draw(_spriteBatch);
 			_spriteBatch.End();
 
-			_spriteBatch.Begin(samplerState: SamplerState.PointClamp, sortMode: SpriteSortMode.FrontToBack);
+			_spriteBatch.Begin(samplerState: SamplerState.PointClamp, sortMode: SpriteSortMode.FrontToBack, transformMatrix: cameraManager.TransformMatrix);
 			renderSystem.Draw(_spriteBatch);
 			_spriteBatch.End();
 
